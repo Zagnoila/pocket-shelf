@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { initializeApp, deleteApp } from 'firebase/app';
 import { getAuth, signInAnonymously, deleteUser } from 'firebase/auth';
-import { getDatabase, ref, set, get, remove, goOffline } from 'firebase/database';
+import { getDatabase, ref, set, get, remove, goOffline, onValue } from 'firebase/database';
 const config={apiKey:process.env.VITE_FIREBASE_API_KEY,authDomain:process.env.VITE_FIREBASE_AUTH_DOMAIN,projectId:process.env.VITE_FIREBASE_PROJECT_ID,databaseURL:process.env.VITE_FIREBASE_DATABASE_URL,appId:process.env.VITE_FIREBASE_APP_ID};
 const apps=[initializeApp(config,'test-a'),initializeApp(config,'test-b')];
 const dbs=apps.map(app => getDatabase(app));const users=[];
@@ -10,7 +10,19 @@ try {
   for(const app of apps) users.push((await signInAnonymously(getAuth(app))).user);
   const path=`shelves/${users[0].uid}/links/test-item`;
   const item={url:'https://example.com/',title:'Disposable database test',category:'Learn',createdAt:Date.now()};
+  let stopListening;
+  const received = new Promise((resolve, reject) => {
+    stopListening = onValue(ref(dbs[0],path), snapshot => {
+      if (snapshot.exists()) {
+        console.log('Snapshot values:', JSON.stringify(snapshot.val()));
+        resolve(snapshot.val());
+      }
+    }, reject);
+  });
   await set(ref(dbs[0],path),item);
+  assert.equal((await received).title, item.title);
+  stopListening();
+  console.log('PASS: onValue receives the saved snapshot');
   assert.equal((await get(ref(dbs[0],path))).val().title,item.title);
   console.log('PASS: owner can save and retrieve a link');
   await assert.rejects(get(ref(dbs[1],path)));
