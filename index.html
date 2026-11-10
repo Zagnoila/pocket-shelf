@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#243a35" />
+    <meta name="description" content="A little home for the links you want to keep. Save, sort, and revisit your finds with Pocket Shelf." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Pocket Shelf" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="preload" href="/fonts/SpecialGothicExpandedOne-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <title>Pocket Shelf · Keep a good find</title>
+  </head>
+  <body>
+    <main class="app">
+      <header class="masthead">
+        <a class="brand" href="/" aria-label="Pocket Shelf home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 5h8v18H5zm12 0h9v18h-9zM3 27h26"/></svg>POCKET SHELF</a>
+        <button class="text-button" id="install-btn" type="button">Get the app <span aria-hidden="true">↗</span></button>
+      </header>
+
+      <section class="intro" aria-labelledby="intro-title">
+        <p class="eyebrow">A LITTLE HOME FOR GOOD FINDS</p>
+        <h1 id="intro-title">Keep it.<br /><span>Come back to it.</span></h1>
+        <p class="intro-copy">Links worth saving, all on your shelf.</p>
+        <div class="shelf-art" aria-hidden="true"><i class="book book-one">LEARN</i><i class="book book-two">MAKE</i><i class="book book-three">GROW</i><span class="art-star">✳</span><span class="art-line"></span></div>
+      </section>
+
+      <section class="save-panel" aria-labelledby="save-title">
+        <div class="section-top"><h2 id="save-title">Found something?</h2><span class="step-tag">01 / SAVE IT</span></div>
+        <form id="save-form">
+          <div class="url-field"><label for="url">Website link</label><input id="url" name="url" type="text" inputmode="url" autocomplete="url" placeholder="Paste a link here" required maxlength="2048" aria-describedby="url-error" /><p class="field-error" id="url-error"></p></div>
+          <div class="detail-fields"><div><label for="title">Give it a name <span>(optional)</span></label><input id="title" name="title" type="text" placeholder="Something worth keeping" maxlength="100" /></div><div><label for="category">Collection</label><select id="category" name="category"><option value="Learn">Learn</option><option value="Make">Make</option><option value="Grow">Grow</option><option value="Everyday">Everyday</option></select></div></div>
+          <button class="primary" id="save-btn" type="submit" disabled>Add to my shelf <span aria-hidden="true">+</span></button>
+        </form>
+      </section>
+
+      <section class="library" aria-labelledby="library-title">
+        <div class="section-top"><div class="library-title"><h2 id="library-title">Your shelf</h2><span class="count" id="count">0</span></div><span class="step-tag">02 / REVISIT</span></div>
+        <div class="toolbar"><div class="filters" role="group" aria-label="Filter collection"><button type="button" class="filter active" data-category="All" aria-pressed="true">All</button><button type="button" class="filter" data-category="Learn" aria-pressed="false">Learn</button><button type="button" class="filter" data-category="Make" aria-pressed="false">Make</button><button type="button" class="filter" data-category="Grow" aria-pressed="false">Grow</button><button type="button" class="filter" data-category="Everyday" aria-pressed="false">Everyday</button></div><label class="search"><span class="sr-only">Search saved links</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input type="search" id="search" placeholder="Find a link" /></label></div>
+        <p id="connection" class="connection" role="status">Connecting your shelf…</p>
+        <ul id="links" class="links" aria-label="Saved links"></ul>
+        <div class="empty" id="empty"><span class="empty-mark" aria-hidden="true">↗</span><h3>A shelf of possibilities.</h3><p>Add your first find above, or try a few starter links.</p><button class="secondary" id="sample-btn" type="button" disabled>Add starter links</button></div>
+        <div class="library-footer"><p id="results" aria-live="polite">Ready for your next good find.</p><div><button class="text-button" id="export-btn" type="button" disabled>Export</button><button class="text-button danger" id="clear-btn" type="button" disabled>Clear shelf</button></div></div>
+      </section>
+
+      <footer class="footer"><span>MADE BY IAN ROSENTHAL</span><span>Keep curious. Keep collecting.</span></footer>
+      <p class="privacy-note">Your shelf belongs to this browser. Export a backup before clearing browser data or switching devices.</p>
+    </main>
+    <div id="toast" class="toast" role="status" hidden></div>
+    <dialog id="confirm-dialog" aria-labelledby="confirm-title"><form method="dialog"><p class="eyebrow">A FRESH START</p><h2 id="confirm-title">Clear your shelf?</h2><p>This removes all saved links from your shelf. Export a backup first if you want to keep them.</p><div class="dialog-actions"><button class="secondary" value="cancel" autofocus>Keep my links</button><button class="primary destructive" id="confirm-clear" value="confirm">Clear shelf</button></div></form></dialog>
+    <dialog id="install-dialog" aria-labelledby="install-title"><form method="dialog"><p class="eyebrow">TAKE YOUR SHELF WITH YOU</p><h2 id="install-title">A spot on your home screen.</h2><p><strong>iPhone / iPad:</strong> open this site in Safari, tap Share, then Add to Home Screen.</p><p><strong>Android:</strong> open this site in Chrome, tap the menu, then Add to Home screen or Install app.</p><p class="small">Home-screen and browser storage may be separate on some devices. Export your links before switching.</p><button class="primary" value="close">Got it</button></form></dialog>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

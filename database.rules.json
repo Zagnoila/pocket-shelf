@@ -1,0 +1,32 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "shelves": {
+      "$uid": {
+        "links": {
+          ".read": "auth !== null && auth.uid === $uid",
+          ".write": "auth !== null && auth.uid === $uid",
+          "$link": {
+            ".validate": "newData.hasChildren(['url', 'title', 'category', 'createdAt'])",
+            "url": {
+              ".validate": "newData.isString() && newData.val().length <= 2048 && newData.val().matches(/^https?:\\/\\/.+/)"
+            },
+            "title": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 100"
+            },
+            "category": {
+              ".validate": "newData.val() === 'Learn' || newData.val() === 'Make' || newData.val() === 'Grow' || newData.val() === 'Everyday'"
+            },
+            "createdAt": {
+              ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        }
+      }
+    }
+  }
+}
