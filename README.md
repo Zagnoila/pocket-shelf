@@ -2,6 +2,8 @@
 
 A little home for links worth keeping. Built by Ian Rosenthal for **Scrimba Learn JavaScript, Module 8: Build a Mobile App**.
 
+**[Open Pocket Shelf](https://ian-rosenthal-pocket-shelf.netlify.app/)**
+
 ## Features
 
 - Save website links with an optional title and collection: Learn, Make, Grow, or Everyday.
