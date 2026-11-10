@@ -1,5 +1,5 @@
-const CACHE = 'pocket-shelf-v1';
-const SHELL = ['/', '/favicon.svg', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/fonts/SpecialGothicExpandedOne-Regular.ttf'];
+const CACHE = 'pocket-shelf-v2';
+const SHELL = ['/', '/favicon.svg', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/fonts/SpecialGothicExpandedOne-Regular.ttf', '/fonts/PermanentMarker-Regular.ttf', '/fonts/Barriecito-Regular.ttf', '/fonts/ShadowsIntoLight.ttf', '/fonts/SpecialElite-Regular.ttf', '/fonts/Silkscreen-Regular.ttf'];
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL))));
 self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))));
 self.addEventListener('fetch', event => {

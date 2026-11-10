@@ -17,7 +17,7 @@ Each browser has a separate anonymous identity. This version does **not** synchr
 
 ## Design
 
-The heading font is **Special Gothic Expanded One**, chosen from Ian's downloaded fonts. Body text uses Arial for readability. The palette combines warm cream (`#F8F3E9`), dark pine (`#243A35`), muted rust (`#B83E29`), and lime (`#CBDC87`). The locally hosted font's SIL Open Font License is included in `public/fonts/OFL.txt`.
+Six fonts from Ian's saved font library give the app a scrapbook feel: **Special Gothic Expanded One** (brand), **Permanent Marker** (headline and save button), **Barriecito** (accent headings), **Shadows Into Light** (handwritten notes), **Special Elite** (labels and card titles), and **Silkscreen** (small stamps and counters). Link URLs and form inputs use Arial for readability. Tilted tabs, tape details, varied paper colors, and lightly staggered cards add a deliberately handmade look. The palette keeps warm cream (`#F8F3E9`), dark pine (`#243A35`), rust (`#AD3929`), and lime (`#CBDC87`). Fonts are locally hosted; their SIL Open Font or Apache licenses are included in `public/fonts/`.
 
 ## Run locally
 
